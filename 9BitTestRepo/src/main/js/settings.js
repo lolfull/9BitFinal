@@ -161,7 +161,7 @@ var SettingsComponent = React.createClass({
     },
 
     handleAchievements(e){
-        fetch('http://localhost:8080/transaction/achievement1?'
+        fetch('http://localhost:8080/transactionTest/achievement1'
             , {
                 method: 'POST',
                 headers: {
@@ -173,7 +173,7 @@ var SettingsComponent = React.createClass({
         }
     });
 
-        fetch('http://localhost:8080/transaction/achievement5?'
+        fetch('http://localhost:8080/transactionTest/achievement5'
             , {
                 method: 'POST',
                 headers: {
