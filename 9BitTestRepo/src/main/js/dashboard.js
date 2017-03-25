@@ -15,6 +15,25 @@ google.charts.setOnLoadCallback(drawTableChart2);
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
 // draws it.
+var myjson;
+$.ajax({
+    url: "http://localhost:8080/transactionTest",
+    type: "GET",
+
+    contentType: 'application/json; charset=utf-8',
+    success: function(resultData) {
+        returnData(resultData);
+    },
+    async: false,
+    error : function(jqXHR, textStatus, errorThrown, transSum) {
+    },
+    
+    timeout: 120000,
+});
+function returnData(resultData){
+    myjson = resultData;
+    console.log(myjson);
+}
 var foodSum = 0;
 var housingSum = 0;
 var leisureSum = 0;
@@ -31,56 +50,47 @@ var savingsCn = 0;
 var schoolCn = 0;
 var clothCn = 0;
 var otherCn = 0;
-jQuery.ajax({
-    url: "http://localhost:8080/transactionTest",
-    type: "GET",
 
-    contentType: 'application/json; charset=utf-8',
-    success: function(resultData) {
-        for(var i = 0; i<resultData.length;i++) {
-            var currCat = resultData[i].category;
-            var currAm = resultData[i].amount;
-            if (currCat == 'food') {
-                foodSum = foodSum + parseInt(currAm);
-                foodCn = foodCn + 1;
-            }
-            else if (currCat == "housing") {
-                housingSum = housingSum + parseInt(currAm);
-                housingCn = housingCn + 1;
-            }
-            else if (currCat == 'leisure') {
-                leisureSum = leisureSum + parseInt(currAm);
-                leisureCn = leisureCn + 1;
-            }
-            else if (currCat == 'transportation') {
-                transSum = transSum + parseInt(currAm);
-                transCn = transCn + 1;
-            }
-            else if (currCat == 'savings') {
-                savingsSum = savingsSum + parseInt(currAm);
-                savingsCn = savingsSum + 1;
-            }
-            else if (currCat == 'school') {
-                schoolSum = schoolSum + parseInt(currAm);
-                schoolCn = schoolCn + 1;
-            }
-            else if (currCat == 'clothing') {
-                clothSum = clothSum + parseInt(currAm);
-                clothCn = clothCn + 1;
-            }
-            else {
-                otherSum = otherSum + parseInt(currAm);
-                otherCn = otherCn + 1;
-            }
-        }
-        drawChart(foodSum, housingSum, leisureSum, transSum, savingsSum, schoolSum, clothSum, otherSum, foodCn, housingCn, leisureCn, transCn, savingsCn, schoolCn, clothCn, otherCn)
-    },
-    error : function(jqXHR, textStatus, errorThrown, transSum) {
-    },
+console.log(JSON.stringify(myjson[0].category));
 
-    timeout: 120000,
-});
-function drawChart(foodSum, housingSum, leisureSum, transSum, savingsSum, schoolSum, clothSum, otherSum, foodCn, housingCn, leisureCn, transCn, savingsCn, schoolCn, clothCn, otherCn) {
+for(var i = 0; i<myjson.length;i++) {
+    var currCat = myjson[i].category;
+    var currAm = myjson[i].amount;
+    console.log(JSON.stringify(currAm));
+    if (currCat == 'food') {
+        foodSum = foodSum + parseInt(currAm);
+        foodCn = foodCn + 1;
+    }
+    else if (currCat == "housing") {
+        housingSum = housingSum + parseInt(currAm);
+        housingCn = housingCn + 1;
+    }
+    else if (currCat == 'leisure') {
+        leisureSum = leisureSum + parseInt(currAm);
+        leisureCn = leisureCn + 1;
+    }
+    else if (currCat == 'transportation') {
+        transSum = transSum + parseInt(currAm);
+        transCn = transCn + 1;
+    }
+    else if (currCat == 'savings') {
+        savingsSum = savingsSum + parseInt(currAm);
+        savingsCn = savingsSum + 1;
+    }
+    else if (currCat == 'school') {
+        schoolSum = schoolSum + parseInt(currAm);
+        schoolCn = schoolCn + 1;
+    }
+    else if (currCat == 'clothing') {
+        clothSum = clothSum + parseInt(currAm);
+        clothCn = clothCn + 1;
+    }
+    else {
+        otherSum = otherSum + parseInt(currAm);
+        otherCn = otherCn + 1;
+    }
+}
+function drawChart() {
 
     // Create the data table.
     var data = new google.visualization.DataTable();
