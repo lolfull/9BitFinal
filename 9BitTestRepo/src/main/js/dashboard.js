@@ -15,31 +15,31 @@ google.charts.setOnLoadCallback(drawTableChart2);
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
 // draws it.
-let foodSum = 0;
-let housingSum = 0;
-let leisureSum = 0;
-let transSum = 0;
-let savingsSum = 0;
-let schoolSum = 0;
-let clothSum = 0;
-let otherSum = 0;
-let foodCn = 0;
-let housingCn = 0;
-let leisureCn = 0;
-let transCn = 0;
-let savingsCn = 0;
-let schoolCn = 0;
-let clothCn = 0;
-let otherCn = 0;
+var foodSum = 0;
+var housingSum = 0;
+var leisureSum = 0;
+var transSum = 0;
+var savingsSum = 0;
+var schoolSum = 0;
+var clothSum = 0;
+var otherSum = 0;
+var foodCn = 0;
+var housingCn = 0;
+var leisureCn = 0;
+var transCn = 0;
+var savingsCn = 0;
+var schoolCn = 0;
+var clothCn = 0;
+var otherCn = 0;
 jQuery.ajax({
     url: "http://localhost:8080/transactionTest",
-    type: "PUT",
+    type: "GET",
 
     contentType: 'application/json; charset=utf-8',
     success: function(resultData) {
-        for(let i = 0; i<resultData.length;i++) {
-            let currCat = resultData[0].category;
-            let currAm = resultData[0].amount;
+        for(var i = 0; i<resultData.length;i++) {
+            var currCat = resultData[i].category;
+            var currAm = resultData[i].amount;
             if (currCat == 'food') {
                 foodSum = foodSum + parseInt(currAm);
                 foodCn = foodCn + 1;
@@ -83,7 +83,7 @@ jQuery.ajax({
 function drawChart(foodSum, housingSum, leisureSum, transSum, savingsSum, schoolSum, clothSum, otherSum, foodCn, housingCn, leisureCn, transCn, savingsCn, schoolCn, clothCn, otherCn) {
 
     // Create the data table.
-    let data = new google.visualization.DataTable();
+    var data = new google.visualization.DataTable();
     data.addColumn('string', 'Topping');
     data.addColumn('number', 'Slices');
 
@@ -99,22 +99,22 @@ function drawChart(foodSum, housingSum, leisureSum, transSum, savingsSum, school
     ]);
 
     // Set chart options
-    let options = {
+    var options = {
         'title': 'Number of Recent Transactions By Type',
         'width': 600,
         'height': 400
     };
 
     // Instantiate and draw our chart, passing in some options.
-    let chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    let barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
     chart.draw(data, options);
     barchart.draw(data, options);
 }
 
 // callback that draws table chart
 function drawTableChart(housing,food) {
-    let data = new google.visualization.DataTable();
+    var data = new google.visualization.DataTable();
 
     data.addColumn('string', 'Transaction Category');
     data.addColumn('number', 'Amount');
@@ -126,20 +126,20 @@ function drawTableChart(housing,food) {
         ['Leisure', {v: 7000, f: '$7,000'}, true]
     ]);
 
-    let table = new google.visualization.Table(document.getElementById('table_div'));
+    var table = new google.visualization.Table(document.getElementById('table_div'));
 
     table.draw(data, {showRowNumber: true, width: '1100', height: '200'});
 }
 
 function drawTableChart2() {
-    let data = new google.visualization.DataTable();
+    var data = new google.visualization.DataTable();
     data.addColumn('string', 'Advice Category');
     data.addColumn('string', 'Advice');
     data.addRows([
         ['Spending Habits','Use the 50/30/20 rule'],
     ]);
 
-    let table = new google.visualization.Table(document.getElementById('table_div2'));
+    var table = new google.visualization.Table(document.getElementById('table_div2'));
 
     table.draw(data, {showRowNumber: true, width: '600', height: '200'});
 }
