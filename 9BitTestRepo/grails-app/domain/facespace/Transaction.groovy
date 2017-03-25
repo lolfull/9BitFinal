@@ -2,11 +2,11 @@ package facespace
 
 class Transaction {
 
-    String amounts
-    String categorys
-    String dates
+    String amount
+    String category
+    String date
+    String username
 
-    static belongsTo = [sourceProfile: UserAccount]
 
     static constraints = {
         //constaints so that year, month and day values all make sense
