@@ -40,4 +40,22 @@ class TransactionTestController extends RestfulController{
         }
 
     }
+    def achievement1(){
+        def transactionList = Transaction.findAll()
+        if ( (transactionList != null) && (transactionList.size() >= 1)){
+            response.status = 200
+        } else{
+            response.status = 404
+        }
+    }
+
+    //check if user has at least 5 transactions
+    def achievement5(){
+        def transactionList = Transaction.findAll()
+        if ( (transactionList != null) && (transactionList.size() >= 5)){
+            response.status = 200
+        } else {
+            response.status = 404
+        }
+    }
 }
