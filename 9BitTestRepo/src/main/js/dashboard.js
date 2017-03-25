@@ -93,7 +93,7 @@ function drawChart() {
     // Create the data table.
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Topping');
-    data.addColumn('number', 'Slices');
+    data.addColumn('number', 'Transactions');
 
     data.addRows([
         ['Food', foodSum],
