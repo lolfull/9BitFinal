@@ -119,19 +119,19 @@ function drawChart() {
     chart.draw(data, options);
     barchart.draw(data, options);
 }
-
+var jsonlength = myjson.length
 // callback that draws table chart
-function drawTableChart(housing,food) {
+function drawTableChart() {
     var data = new google.visualization.DataTable();
 
     data.addColumn('string', 'Transaction Category');
     data.addColumn('number', 'Amount');
     data.addColumn('boolean', 'Good');
     data.addRows([
-        ['Housing', {v: 10000, f: '$10,000'}, true],
-        ['Food', {v: 8000, f: '$8,000'}, false],
-        ['Food', {v: 12500, f: '$12,500'}, true],
-        ['Leisure', {v: 7000, f: '$7,000'}, true]
+        [myjson[jsonlength-1].category, {v: parseInt(myjson[jsonlength-1].amount), f: myjson[jsonlength-1].amount}, true],
+        [myjson[jsonlength-2].category, {v: parseInt(myjson[jsonlength-2].amount), f: myjson[jsonlength-2].amount}, true],
+        [myjson[jsonlength-3].category, {v: parseInt(myjson[jsonlength-3].amount), f: myjson[jsonlength-3].amount}, true],
+        [myjson[jsonlength-4].category, {v: parseInt(myjson[jsonlength-4].amount), f: myjson[jsonlength-4].amount}, true],
     ]);
 
     var table = new google.visualization.Table(document.getElementById('table_div'));
