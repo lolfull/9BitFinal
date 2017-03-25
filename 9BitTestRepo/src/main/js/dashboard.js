@@ -27,7 +27,7 @@ $.ajax({
     async: false,
     error : function(jqXHR, textStatus, errorThrown, transSum) {
     },
-    
+
     timeout: 120000,
 });
 function returnData(resultData){
@@ -50,8 +50,6 @@ var savingsCn = 0;
 var schoolCn = 0;
 var clothCn = 0;
 var otherCn = 0;
-
-console.log(JSON.stringify(myjson[0].category));
 
 for(var i = 0; i<myjson.length;i++) {
     var currCat = myjson[i].category;
