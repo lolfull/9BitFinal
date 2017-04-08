@@ -10,7 +10,7 @@ OPTION 1
 - Fork the project repository on GitHub
 - Open IntelliJ and click VCS > Checkout from Version Control > GitHub
 - You will be asked to sign in to your GitHub account, once you do so, enter the url 
-of your fork of the project (i.e: https://github.com/username/9BitDev/master/9BitTestRepo.git)
+of your fork of the project (i.e: https://github.com/username/9BitFinal/master/9BitTestRepo.git)
 	- Remember that the project is stored in the folder 9BitTestRepo
 	- The parent directory and directory name can be changed if desired.
 - Click clone, and if successful, you will be prompted to open a new IntelliJ project
@@ -47,7 +47,7 @@ password: password
 
 USING THE APP
 
-There are four buttons on the left side: dashboard brings the user to the home page of the app that displays transactions and the graphs of
-user's spending. Add transactions takes the user to a page where they can add a new transaction. Settings takes the user to the settings page which displays the achievements the user has earned. The logout button logs the user out of the application.
+There are four buttons on the left side: Dashboard brings the user to the home page of the app that displays transactions and the graphs of
+user's spending. Transactions takes the user to a page where they can add a new transaction. Settings takes the user to the settings page which displays the achievements the user has earned. The logout button logs the user out of the application.
 
 Dependencies: merged pull requests from group member GitHub repositories
